@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "econ_3201_assignment_1_Chen_demo",
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "My Blog",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "No matching items"
+  },
+  {
+    "objectID": "CV.html",
+    "href": "CV.html",
+    "title": "Curriculum Vitae",
+    "section": "",
+    "text": "Click here\n\nContact Information\n\n\nEducation\n\n\nCurrent Position(s)\n\n\nPrevious Position(s)"
   },
   {
     "objectID": "about.html",
@@ -14,10 +21,10 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "CV.html",
-    "href": "CV.html",
-    "title": "Curriculum Vitae",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "econ_3201_assignment_1_Chen_demo",
     "section": "",
-    "text": "Contact Information\n\n\nEducation\n\n\nCurrent Position(s)\n\n\nPrevious Position(s)"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   }
 ]
