@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "My Blog",
     "section": "",
-    "text": "index\n\n\n\nQuarto\n\nR\n\nData Analysis\n\n\n\nblog post description\n\n\n\nYingxin Chen\n\n\n\n\n\n\nNo matching items"
+    "text": "blog title\n\n\n\nQuarto\n\nR\n\nData Analysis\n\n\n\nblog post description\n\n\n\nYingxin Chen\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -30,8 +30,8 @@
   {
     "objectID": "posts/2026_10_08_assignment_1/index.html",
     "href": "posts/2026_10_08_assignment_1/index.html",
-    "title": "index",
+    "title": "blog title",
     "section": "",
-    "text": "CitationBibTeX citation:@online{chen,\n  author = {Chen, Yingxin},\n  title = {Index},\n  url = {https://yingx436-web.github.io/econ_3201_assignment_1_Chen_demo/2026_10_08_assignment_1/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nChen, Yingxin. n.d. “Index.” https://yingx436-web.github.io/econ_3201_assignment_1_Chen_demo/2026_10_08_assignment_1/."
+    "text": "CitationBibTeX citation:@online{chen,\n  author = {Chen, Yingxin},\n  title = {Blog Title},\n  url = {https://yingx436-web.github.io/econ_3201_assignment_1_Chen_demo/2026_10_08_assignment_1/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nChen, Yingxin. n.d. “Blog Title.” https://yingx436-web.github.io/econ_3201_assignment_1_Chen_demo/2026_10_08_assignment_1/."
   }
 ]
