@@ -1,5 +1,5 @@
 ---
-title: "index"
+title: "blog title"
 description: "blog post description"
 author:
   - name: Yingxin Chen
