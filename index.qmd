@@ -10,6 +10,5 @@ title: "Yingxin Chen"
 
 I am an undergraduate student at the University of Winnipeg,majoring in Psychology and minoring in Economics. I am interested in understanding human behaviour and economic decision-making.Through my econometrics course, I am learning to use R to analyse data. This website shares my coursework and assignments.
 
-```{r}
-1 + 1
-```
+# Assignment #1
+click [here](file/econ_3201_a1.pdf)
