@@ -4,11 +4,11 @@ title: "Yingxin Chen"
 
 # Credentials:
 
-- Bachelor of Arts in Psychology, Minor in Economics (in progress), University of Winnipeg
+Bachelor of Arts in Psychology, Minor in Economics (in progress), University of Winnipeg
 
 # About Me:
 
-I am an undergraduate student at the University of Winnipeg,majoring in Psychology and minoring in Economics. I am interested in understanding human behaviour and economic decision-making.Through my econometrics course, I am learning to use R to analyse data. This website shares my coursework and assignments.
+I am an undergraduate student at the University of Winnipeg, majoring in Psychology and minoring in Economics. I am interested in understanding human behaviour and economic decision-making.Through my econometrics course, I am learning to use R to analyse data. This website shares my coursework and assignments.
 
 # Assignment #1
-click [here](file/econ_3201_a1.pdf)
+Click [here](posts/2026_10_08_assignment_1/econ_3201_a1.pdf)

@@ -1,7 +1,6 @@
 ---
 title: "blog"
 description: "Assignment"
-
 author:
   - name: Yingxin Chen
   - affiliation: Department of Economics, University of Winnipeg

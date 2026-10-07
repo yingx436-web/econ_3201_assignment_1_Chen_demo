@@ -3,12 +3,11 @@ project:
   output-dir: docs
 
 website:
-  title: "econ_3201_assignment_1_Chen_demo"
+  title: "econ_3201_assignment_1_Chen"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
       - href: posts.qmd
         text: Blog
 
