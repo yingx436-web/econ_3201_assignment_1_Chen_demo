@@ -12,3 +12,6 @@ I am an undergraduate student at the University of Winnipeg, majoring in Psychol
 
 # Assignment #1
 Click [here](posts/2026_10_08_assignment_1/econ_3201_a1.pdf)
+
+# Assignment #2
+Click [here](posts/2026_10_08_assignment_1/econ_3201_a2.pdf)
