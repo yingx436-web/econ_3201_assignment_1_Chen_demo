@@ -15,4 +15,6 @@ draft: false
 
 # Assignment #2
 
-Click [here](econ_3201_a2.pdf)
+Click [here](econ_3201_a2.pdf) to view the PDF
+
+Click [here](https://github.com/yingx436-web/econ_3201_assignment_1_Chen_demo/blob/master/posts/2026_11_06_assignment_2/econ_3201_a2_source.qmd) to view the Quarto file
