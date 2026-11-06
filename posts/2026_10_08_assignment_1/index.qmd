@@ -1,6 +1,6 @@
 ---
 title: "blog"
-description: "Assignment"
+description: "Assignment #1"
 
 author:
   - name: Yingxin Chen
@@ -16,7 +16,3 @@ draft: false
 # Assignment #1
 
 Click [here](econ_3201_a1.pdf)
-
-# Assignment #2
-
-Click [here](econ_3201_a2.pdf)

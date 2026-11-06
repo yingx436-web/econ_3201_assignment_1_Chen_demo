@@ -1,0 +1,331 @@
+---
+title: |
+  | ECON 3201 
+  | Econometrics for Economics and Finance
+subtitle: |
+    | Assignment 2
+    | Due November 5, 2026
+author: "Yingxin Chen"
+format: 
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{pdflscape}
+        \usepackage{longtable}
+        \usepackage{fancyhdr}
+        \fancypagestyle{style1}{
+        \fancyhf{}
+        \fancyhead[R]{A2}
+        \fancyfoot[C]{\thepage}
+        \renewcommand{\headrulewidth}{0.4pt}
+        }
+
+        \fancypagestyle{style2}{
+        \fancyhf{}
+        \fancyhead[R]{Term Test 1}
+        \fancyhead[L]{ECON 3201}
+        \fancyfoot[C]{\thepage}
+        \renewcommand{\headrulewidth}{1pt}
+        }
+        \pagestyle{style2}
+
+editor: visual
+---
+
+\vspace{-1in}
+
+# Instructions
+
+Complete your midterm exam using R and type your answers in LaTeX. Answer all questions. Please complete your assignment using Quarto. Upload both your Quarto file and pdf file to your website under new blog post.
+
+# Questions
+
+## Question 1
+
+$X$ and $Y$ are discrete random variables with the following joint distribution. Use the data frame `d` to answer your questions:
+
+```{r}
+#| echo: true
+#| tbl-cap: "Joint Distribution of $X$ and $Y$"
+#| label: tbl-dist
+library(kableExtra)
+d <- data.frame('\\hspace{1pt}' = c(rep('Value of X',3)),
+                '\\hspace{1pt}' = c(1,5,8),
+                '20' = c(0.07,0.32,0.05),
+                '30' = c(0.10,0.05,0.15),
+                '40' = c(0.04,0.03,0.19),
+                check.names = FALSE)
+
+
+knitr::kable(d,
+             format = "latex",
+             booktabs = T,
+             escape = FALSE,
+             align = c("l","c","c","c","c"),
+             longtable= T )%>% 
+  kable_styling(position = "center")%>%
+  add_header_above(c(" " = 1, " " = 1, "Value of Y" = 3))%>%
+  collapse_rows(columns = 1:2, valign = "top")
+```
+
+a)  Calculate the marginal probability distribution of $Y$. \[2 Marks\]
+
+$$\begin{aligned} 
+\Pr(Y=20)&=0.07+0.32+0.05=0.44\\
+\Pr(Y=30)&=0.10+0.05+0.15=0.30\\
+\Pr(Y=40)&=0.04+0.03+0.19=0.26
+\end{aligned}$$
+
+```{r}
+joint <- matrix(c(0.07, 0.32, 0.05, 0.10, 0.05, 0.15, 0.04, 0.03, 0.19), 
+                nrow = 3,
+                dimnames = list(X = c("1", "5", "8"),
+                                Y = c("20", "30", "40")))
+
+py <- colSums(joint)
+py
+```
+
+b)  Calculate the mean of $Y$. \[3 Marks\]
+
+$$\begin{aligned}
+E(Y)&=20(0.44)+30(0.30)+40(0.26)=28.2
+\end{aligned}$$
+
+```{r}
+EY <- sum(c(20, 30, 40) * py)
+EY
+```
+
+c)  Calculate the variance of $Y$. \[3 Marks\]\
+
+$$\begin{aligned}
+{Var}(Y)&=\sum [y-E(Y)]^2*\Pr(Y=y)\\
+&=(20-28.2)^2(0.44)+(30-28.2)^2(0.30)+(40-28.2)^2(0.26)\\
+&=66.76
+\end{aligned}$$
+
+```{r}
+variance_y <- sum((c(20, 30, 40) - EY)^2 * py)
+variance_y
+```
+
+## Question 2
+
+Using R commands, compute the following probabilities:
+
+a)  If $Y$ is distributed $N(3,9)$, find $Pr(Y>1)$. \[2 Marks\]
+
+$$\begin{aligned}
+\Pr(Y>1)&=\Pr\left( Z>\frac{1-3}{\sqrt{9}} \right)\\
+&=\Pr\left( Z>-\frac{2}{3} \right)\\
+&=1-\Phi\left( -\frac{2}{3} \right)\\
+&=0.7475
+\end{aligned}$$
+
+```{r}
+1 - pnorm(1, mean = 3, sd = sqrt(9))
+```
+
+b)  If $Y$ is distributed $N(5,2)$, find $Pr(6\leq Y\leq 8)$. \[3 Marks\]\
+
+$$\begin{aligned}
+\Pr(6\leq Y \leq8)&=\Pr\left( \frac{6-5}{\sqrt{2}} \leq Z \leq \frac{8-5}{\sqrt{2}} \right)\\
+&=\Phi\left( \frac{3}{\sqrt{2}} \right)-\Phi\left( \frac{1}{\sqrt{2}} \right)\\
+&=0.2228
+\end{aligned}$$
+
+```{r}
+pnorm(8, mean = 5, sd = sqrt(2)) - pnorm(6, mean = 5, sd = sqrt(2))
+```
+
+## Question 3
+
+The random variable $Y$ be a random variable with mean $\mu$ and variance $\sigma^2$. Type your answers.
+
+a)  Let $Z$ denote the standardized version of $Y$. What is the functional form of $Z$? \[1 Mark\]
+
+$$Z=\frac{Y-\mu}{\sigma}$$
+
+b)  Show that the expected value of of $Z$, $E(Z)$, in part (a) is 0. \[3 Marks\]
+
+$$\begin{aligned}
+E(Z)&=E\left( \frac{Y-\mu}{\sigma} \right)\\
+&=\frac{1}{\sigma}[E(Y)-\mu]\\
+&=\frac{1}{\sigma}(\mu-\mu)\\
+&=\frac{1}{\sigma}(0)\\
+&=0
+\end{aligned}$$
+
+c)  Show that the variance of $Z$, $E\left[(Z-E(Z))^2\right]$, in part (a) is 1. \[3 Marks\]\
+
+$$\begin{aligned}
+E[(Z-E(Z))^2]&=E[(Z-0)^2]\\
+&=E(Z)^2\\
+&=E[\left( \frac{Y-\mu}{\sigma} \right)^2]\\
+&=\frac{1}{\sigma^2}E[(Y-\mu)^2]\\
+&=\frac{\sigma^2}{\sigma^2}\\
+&=1
+\end{aligned}$$
+
+## Question 4
+
+@tbl-vax displays the joint probabilities of covid-19 vaccination status and hospitalization with covid-19.
+
+```{r}
+#| echo: true
+#| tbl-cap: "Joint Distribution of Covid-19 Vaccination Status and Hospitalizations Due to Covid-19"
+#| label: tbl-vax
+library(kableExtra)
+d <- data.frame('\\hspace{1pt}' = c('Hospitalized',''),
+                '\\hspace{1pt}' = c('Yes','No'),
+                'Yes' = c(0.007,0.666),
+                'No' = c(0.075,0.252),
+                check.names = FALSE)
+
+
+knitr::kable(d,
+             format = "latex",
+             booktabs = T,
+             escape = FALSE,
+             align = c("l","c","c","c"),
+             longtable= T)%>% 
+  kable_styling(position = "center")%>%
+  add_header_above(c(" " = 1, " " = 1, "Vaccinated" = 2))
+```
+
+a)  Compute the probability that an individual is vaccinated conditional on being hospitalized with covid-19, i.e. $Pr(\text{Vaccinated = Yes}|\text{Hospitalized = Yes})$. \[2 Marks\]
+
+$$\begin{aligned}
+\Pr(\text{Vaccinated=Yes}|\text{Hospitalized=Yes})&=\frac{\Pr(\text{Vaccinated=Yes, Hospitalized=Yes})}{\Pr(\text{Vaccinated=Yes})}\\
+&=\frac{0.007}{0.007+0.075}\\
+&=\frac{0.007}{0.082}\\
+&=0.0854
+\end{aligned}$$
+
+```{r}
+joint <- matrix(c(0.007, 0.666, 0.075, 0.252), nrow = 2,
+                dimnames = list(Hospitalized = c("Yes", 
+                                                 "No"),
+                                Vaccinated = c("Yes", 
+                                               "No")))
+
+ph <- rowSums(joint)
+
+joint["Yes","Yes"] / ph["Yes"]
+```
+
+b)  Using Bayes' equation, compute the probability of being hospitalized with covid-19 conditional on being vaccinated, i.e., $Pr(\text{Hospitalized = Yes}|\text{Vaccinated = Yes})$. \[3 Marks\]\
+
+$$\begin{aligned}
+\Pr(\text{Hospitalized=Yes}|\text{Vaccinated=Yes})&=\frac{\Pr(\text{Vaccinated=Yes}|\text{Hospitalized=Yes})\Pr(\text{Hospitalized=Yes})}{\Pr(\text{Vaccinated=Yes})}\\
+&=\frac{0.007}{0.007+0.666}\\
+&=\frac{0.007}{0.673}\\
+&=0.010
+\end{aligned}$$
+
+```{r}
+pv <- colSums(joint)
+
+joint["Yes", "Yes"] / pv["Yes"]
+```
+
+## Question 5
+
+Let $Y_1,...Y_n$ be i.i.d. draws from the population with mean $\mu_Y$. Type your answers.
+
+a)  What is the bias of an estimator? \[1 Mark\]
+
+Bias of an estimator is the difference between the expected value and the true parameter.
+
+
+
+b)  Show that $\bar{Y}$ is an unbiased estimator of $\mu_Y$. \[5 Marks\]\
+
+Since $E(Y)=\mu_Y$, $$\begin{aligned}
+E(\bar Y)&=\frac{1}{n}\sum_{i=1}^{n}E(Y_i)\\
+&=\frac{1}{n}(n\mu_Y)\\
+&=\mu_Y
+\end{aligned}$$
+
+## Question 6
+
+A researcher claims that the average height of adult men in a city is 175 cm. To test this claim, a random sample of 30 adult men is selected, and their heights are recorded. The sample has a mean height of 172 cm and a standard deviation of 8 cm.
+
+a)  State the null and alternative hypotheses for this test. \[1 Mark\]
+
+$$\begin{aligned}
+H_0&:\mu=175\\
+H_1&:\mu\neq175
+\end{aligned}$$
+
+b)  Calculate the test statistic using R commands. \[2 Marks\]
+
+$$\begin{aligned}
+t&=\frac{\bar{Y}-\mu_{Y,0}}{SE(\bar{Y})}\\
+&=\frac{172-175}{8/\sqrt{30}}\\
+&=-2.054
+\end{aligned}$$
+
+```{r}
+samplemean_act <- 172
+mean_h0 <- 175
+se <- 8/sqrt(30)
+
+tstatistic <- (samplemean_act - mean_h0) / se
+
+tstatistic
+```
+
+c)  Determine the critical value(s) at the 5% significance level using the `qnorm()` command. \[1 Mark\]
+
+The probability of each side is $0.05/2=0.025$, the critical values are 1.96 and -1.96.
+
+```{r}
+qnorm(0.025)
+qnorm(0.975)
+```
+
+d)  Based on the test statistic and critical value(s), decide whether to reject the null hypothesis.
+
+Since $t=-2.054 < -1.96$, so we reject $H_0$.
+
+e)  Construct a 95% confidence interval for the true mean height using R commands. \[3 Marks\]
+
+$$\begin{aligned}
+\bar Y \pm 1.96\,SE(\bar Y)&=172\pm 1.96\left( \frac{8}{\sqrt{30}} \right)\\
+&=172\pm 1.96(1.4606)\\
+&=169.14 \text{ and } 174.86 \text{ cm}
+\end{aligned}$$
+
+```{r}
+172 + c(-1, 1) * qnorm(0.975) * se
+```
+
+## Question 7
+
+In a randomized controlled trial, 100 participants are randomly assigned to either a treatment group or a control group. The treatment group has an average improvement score of 80 with a standard deviation of 10, while the control group has an average improvement score of 75 with a standard deviation of 12.
+
+a)  Formulate the null and alternative hypotheses to test if the treatment has a significant causal effect. \[2 Marks\]
+
+Let $\mu_T$ be the treatment group, $\mu_C$ be the control group. 
+$$H_0:\mu_T-\mu_C=0$$
+$$H_1:\mu_T-\mu_C\neq0$$
+
+b)  Compute the test statistic for the difference between means using R commands. \[2 Marks\]
+
+$$\begin{aligned}
+t&=\frac{(80-75)-0}{\sqrt{10^2/50+12^2/50}}\\
+&=2.263
+\end{aligned}$$
+
+```{r}
+tstatistic <- (80 - 75) / sqrt(10^2 / 50 + 12^2 / 50)
+tstatistic
+```
+
+c)  Assuming a significance level of 5%, conclude whether the treatment has a significant causal effect. \[2 Marks\]
+
+Since $2.263 > 1.96$, so we reject $H_0$. Therefore the treatment has a positive causal effect on the improvement score.
+
+## 
